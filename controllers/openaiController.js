@@ -4,7 +4,7 @@ const generateMeta = async (req, res) => {
     const { prompt } = req.body
     const recipe = await openai.chat.completions.create({
         model: "gpt-4o-mini",
-        messages: JSON.parse(prompt),
+        messages: prompt,
     })
 
     res.status(200).json({
