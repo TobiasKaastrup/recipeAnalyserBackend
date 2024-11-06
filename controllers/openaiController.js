@@ -1,9 +1,9 @@
 const openai = require('../config/openaiConfig')
 
 const generateMeta = async (req, res) => {
-    const { prompt } = req.body
+    const { prompt } = JSON.parse(req.body)
 
-    const recipe = await openai.chat.completions.create(JSON.parse(prompt))
+    const recipe = await openai.chat.completions.create(prompt)
 
     res.status(200).json({
         recipe: recipe.choices[0].message
