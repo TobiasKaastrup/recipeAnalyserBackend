@@ -3,7 +3,10 @@ const openai = require('../config/openaiConfig')
 const generateMeta = async (req, res) => {
     const { messages } = req.body
 
-    const recipe = await openai.chat.completions.create(messages)
+    const recipe = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: messages
+    })
 
     res.status(200).json({
         recipe: recipe.choices[0].message
