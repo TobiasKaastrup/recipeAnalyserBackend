@@ -9,7 +9,8 @@ const app = express ()
 app.listen(port, () => console.log('Listening for requests on port 4000'))
 
 // Enable CORS for all origins
-app.use(cors()); // This allows all origins to access your API
+app.options('*', cors()); // Allow all OPTIONS requests
+app.use(cors()); // Allow CORS for all routes
 
 //middleware
 app.use(express.json())
